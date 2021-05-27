@@ -1,0 +1,59 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+
+<button @onclick="GetUserInComponent">Get User in Component</button>
+
+<p>Component response: @componentMessage</p>
+<br />
+<br />
+<button @onclick="GetUserFromClass">Get User from GetUser.cs</button>
+
+<p>GetUser.cs response: @classMessage</p>
+
+@*component stuff:*@
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+@*calling GetUser.cs stuff:*@
+@inject WindowsAuthenticationExample.Data.GetUser getUser
+
+@code {
+    private string componentMessage;
+    private string classMessage;
+
+    private async Task GetUserInComponent()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity.IsAuthenticated)
+        {
+            componentMessage = $"{user.Identity.Name} is authenticated.";
+        }
+        else
+        {
+            componentMessage = "The user is NOT authenticated.";
+        }
+    }
+
+    private async Task GetUserFromClass()
+    {
+        string user = await getUser.GetUserName();
+
+        if (!string.IsNullOrEmpty(user))
+        {
+            classMessage = $"{user} is authenticated.";
+        }
+        else
+        {
+            classMessage = "The user is NOT authenticated.";
+        }
+    }
+}
