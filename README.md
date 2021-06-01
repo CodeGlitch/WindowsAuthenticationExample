@@ -9,6 +9,8 @@
 </AuthorizeView>
 `
 
+![Capture.PNG](Capture.PNG)
+
 ### Files changed/created:
 * Data -> GetUser.cs
 * Startup.cs
