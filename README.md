@@ -1,3 +1,4 @@
+# Windows Authentication (Get User)
 *https://docs.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-5.0*
 
 ### Demonstrated ways to get logged in user, using windows authentication:
