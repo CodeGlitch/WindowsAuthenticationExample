@@ -4,10 +4,10 @@
 * IHttpContextAccessor
 * AuthenticationStateProvider
 * The template project also display the username simply using (LoginDisplay.razor):
-`<AuthorizeView>
+<AuthorizeView>
     Hello, @context.User.Identity.Name!
 </AuthorizeView>
-`
+
 
 ![Capture.PNG](Capture.PNG)
 
